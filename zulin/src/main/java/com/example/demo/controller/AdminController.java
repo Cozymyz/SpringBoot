@@ -97,8 +97,9 @@ public class AdminController {
         List<User> users= userService.allUser();
         int allNumber=users.size();
         int allPage=allNumber%pageNumber==0?allNumber/pageNumber:allNumber/pageSize+1;
-        if(pageNumber>allPage)
+        if(pageNumber>allPage){
             pageNumber=allPage;
+        }
         int no=(pageNumber-1)*pageSize;
         List<User> user=userService.getPageUser(no,pageSize);
         return Msg.success().add("users",user).add("allNumber",allNumber).add("allPage",allPage);
